@@ -58,7 +58,7 @@ class Body extends StatelessWidget {
               Column(
                 children:[
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    padding: const EdgeInsets.only(top: 10, right: 10, bottom: 10, left: 10),
                     child: TextButton(
                       style: TextButton.styleFrom(
                         primary: kPrimaryColor,
@@ -80,11 +80,10 @@ class Body extends StatelessWidget {
                 ],
               ),
               const RiwayatPendidikan(),
-              const SizedBox(height: 20,),
               Column(
                 children:[
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    padding: const EdgeInsets.only(top: 10, right: 10, bottom: 10, left: 10),
                     child: TextButton(
                       style: TextButton.styleFrom(
                         primary: kPrimaryColor,
@@ -107,7 +106,6 @@ class Body extends StatelessWidget {
                 ],
               ),
               const PengalamanKerja(),
-              const SizedBox(height: 30,),
               // Padding(
               RoundedButton(
                 text: "Logout", 

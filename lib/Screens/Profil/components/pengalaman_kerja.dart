@@ -8,12 +8,16 @@ class PengalamanKerja extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 450,
+    return Flexible(
+      flex: 2,
       child: Column(
         children: [
           Row(
             children: <Widget>[
+              const Padding(padding: EdgeInsets.only(
+                right: 5,
+                left: 5,
+              )),
               TextButton(
                 style: TextButton.styleFrom(
                   primary: kPrimaryLightColor,
@@ -29,11 +33,13 @@ class PengalamanKerja extends StatelessWidget {
                 onPressed: (){}, 
                 child: const Text("Konveksi Baju"),
               ),
-              const SizedBox(width: 90,),
-              const Text("Designer Mockup - 3 Bulan",
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
+              const Padding(
+                padding: EdgeInsets.only(left: 7),
+                child: Text("Designer Mockup - 3 Bulan",
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ],
@@ -41,8 +47,13 @@ class PengalamanKerja extends StatelessWidget {
           const SizedBox(height: 10,),
           Row(
             children: <Widget>[
+              const Padding(padding: EdgeInsets.only(
+                right: 5,
+                left: 5,
+              )),
               TextButton(
                 style: TextButton.styleFrom(
+                  // fixedSize: const Size.fromHeight(50),
                   primary: kPrimaryLightColor,
                   padding: const EdgeInsets.only(
                     top: 15,
@@ -54,13 +65,21 @@ class PengalamanKerja extends StatelessWidget {
                   backgroundColor: kPrimaryColor,
                 ),
                 onPressed: (){}, 
-                child: const Text("Capital Real Estate Agent"),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    Text("Capital Real"),
+                    Text("Estate Agent")
+                  ]
+                ),
               ),
-              const SizedBox(width: 20,),
-              const Text("Designer Content - 3 Bulan",
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
+              const Padding(
+                padding: EdgeInsets.only(left: 7),
+                child: Text("Designer Content - 3 Bulan",
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  ),
                 ),
               )
             ],
@@ -68,6 +87,10 @@ class PengalamanKerja extends StatelessWidget {
           const SizedBox(height: 10,),
           Row(
             children: <Widget>[
+              const Padding(padding: EdgeInsets.only(
+                right: 5,
+                left: 5,
+              )),
               TextButton(
                 style: TextButton.styleFrom(
                   primary: kPrimaryLightColor,
@@ -83,11 +106,14 @@ class PengalamanKerja extends StatelessWidget {
                 onPressed: (){}, 
                 child: const Text("Online Shop"),
               ),
-              const SizedBox(width: 105,),
-              const Text("Content Creator - 3 Bulan",
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
+              const Padding(
+                padding: EdgeInsets.only(left: 7),
+                child: Text("Content Creator - 3 Bulan",
+                textAlign: TextAlign.end,
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  ),
                 ),
               )
             ],

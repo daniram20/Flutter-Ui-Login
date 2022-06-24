@@ -25,7 +25,7 @@ class Body extends StatelessWidget {
             //   height: size.height * 0.2)
             SizedBox(height: size.height * 0.03),
             // SvgPicture.asset("/icons/chat.svg", height: size.height * 0.45),
-            Image.asset("/images/tedc.png", height: size.height * 0.3),
+            Image.asset("assets/images/tedc.png", height: size.height * 0.3),
             SizedBox(height: size.height * 0.05),
             RoundedButton(
               text: "Login",

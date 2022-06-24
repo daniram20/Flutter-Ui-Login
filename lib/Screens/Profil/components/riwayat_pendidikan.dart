@@ -8,12 +8,16 @@ class RiwayatPendidikan extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 450,
+    return Flexible(
+      flex: 2,
       child: Column(
         children: [
           Row(
             children: <Widget>[
+              const Padding(padding: EdgeInsets.only(
+                right: 5,
+                left: 5,
+              )),
               TextButton(
                 style: TextButton.styleFrom(
                   primary: kPrimaryLightColor,
@@ -41,6 +45,10 @@ class RiwayatPendidikan extends StatelessWidget {
           const SizedBox(height: 10,),
           Row(
             children: <Widget>[
+              const Padding(padding: EdgeInsets.only(
+                right: 5,
+                left: 5,
+              )),
               TextButton(
                 style: TextButton.styleFrom(
                   primary: kPrimaryLightColor,
@@ -68,6 +76,10 @@ class RiwayatPendidikan extends StatelessWidget {
           const SizedBox(height: 10,),
           Row(
             children: <Widget>[
+              const Padding(padding: EdgeInsets.only(
+                right: 5,
+                left: 5,
+              )),
               TextButton(
                 style: TextButton.styleFrom(
                   primary: kPrimaryLightColor,
