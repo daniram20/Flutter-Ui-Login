@@ -24,6 +24,9 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   bool _isObscure = true;
+  bool _isChecked = false;
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
   String textUsername = "";
   String textPassword = "";
@@ -81,7 +84,7 @@ class _BodyState extends State<Body> {
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: Text("Login Failde"),
+              title: Text("Login Failed"),
               content: Text("Username or Password Wrong!"),
               actions: <Widget>[
                 TextButton(
