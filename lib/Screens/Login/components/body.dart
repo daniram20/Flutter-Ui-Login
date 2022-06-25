@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:project_uts/Screens/Dasboard/dashboard_screen.dart';
 import 'package:project_uts/Screens/Login/components/background.dart';
 import 'package:project_uts/Screens/Login/components/dialog_failed_login.dart';
 import 'package:project_uts/Screens/Login/components/dialog_success_login.dart';
@@ -62,16 +63,16 @@ class _BodyState extends State<Body> {
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: Text("Login Success"),
+              title: const Text("Login Success"),
               content: Text("Welcome $resStatus"),
               actions: <Widget>[
                 TextButton(
-                  child: Text("OK"),
+                  child: const Text("OK"),
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ProfilScreen(),
+                        builder: (context) => const DashboardScreen(),
                       ),
                     );
                   },
