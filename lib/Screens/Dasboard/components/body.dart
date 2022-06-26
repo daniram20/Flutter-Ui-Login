@@ -35,34 +35,46 @@ class _BodyPageState extends State {
   }
 
   Widget personDetailCard(UserModel data) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Card(
-        color: Colors.grey[800],
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  data.nama,
-                  style: const TextStyle(color: Colors.white, fontSize: 18),
-                ),
-                Text(
-                  data.nim,
-                  style: const TextStyle(color: Colors.white, fontSize: 12),
-                ),
-                Text(
-                  data.prodi,
-                  style: const TextStyle(color: Colors.white, fontSize: 12),
-                ),
-                Text(
-                  data.agama,
-                  style: const TextStyle(color: Colors.white, fontSize: 12),
-                ),
-              ]),
+    return CustomScrollView(
+      shrinkWrap: true,
+      primary: false,
+      slivers: <Widget>[
+        SliverPadding(
+          padding: const EdgeInsets.only(top: 10, right: 5, bottom: 10, left: 5),
+          sliver: SliverGrid.count(
+            crossAxisCount: 2,
+            crossAxisSpacing: 50,
+            mainAxisSpacing: 50,
+            children: <Widget>[
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                color: kPrimaryColor,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      data.nama,
+                      style: const TextStyle(color: kPrimaryLightColor, fontSize: 18),
+                    ),
+                    Text(
+                      data.nim,
+                      style: const TextStyle(color: kPrimaryLightColor, fontSize: 12),
+                    ),
+                    Text(
+                      data.prodi,
+                      style: const TextStyle(color: kPrimaryLightColor, fontSize: 12),
+                    ),
+                    Text(
+                      data.agama,
+                      style: const TextStyle(color: kPrimaryLightColor, fontSize: 12),
+                    )
+                ]),
+              )
+
+            ],
           ),
-      ),
+          ),
+      ],
     );
   }
 
@@ -121,12 +133,12 @@ class _BodyPageState extends State {
           ]),
       body: Background(
         child: Center(
-        child: ListView.builder(
-          itemBuilder: (context, i) {
-          return personDetailCard(dataUser[i]);
-        },
-        itemCount: dataUser == null ? 0 : dataUser.length,),
-          ),
+          child: ListView.builder(
+            itemBuilder: (context, i) {
+            return personDetailCard(dataUser[i]);
+          },
+          itemCount: dataUser == null ? 0 : dataUser.length,),
+        ),
       ));
   }
 }

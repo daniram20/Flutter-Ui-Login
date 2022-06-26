@@ -15,6 +15,7 @@ import 'package:project_uts/components/rounded_button.dart';
 import 'package:project_uts/components/rounded_input_field.dart';
 import 'package:http/http.dart' as http;
 import 'package:project_uts/components/rounded_password_field.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -24,14 +25,8 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  bool _isObscure = true;
-  bool _isChecked = false;
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-
   String textUsername = "";
   String textPassword = "";
-
   late Timer _timer;
   // String userEmail = "andiramdani@gmail.com";
 
@@ -45,20 +40,20 @@ class _BodyState extends State<Body> {
           gravity: ToastGravity.CENTER,
           fontSize: 16,
           backgroundColor: Colors.red);
+      return;
     }
-
-    showLoaderDialog(context, 10);
+    showLoaderDialog(context, 30);
     final response = await http.post(
         Uri.parse("http://rismayana.diary-project.com/login.php"),
         body: jsonEncode({"username": textUsername, "password": textPassword}));
     int statCode = response.statusCode;
 
     if (statCode == 200) {
+      Navigator.pop(context);
+      saveSession(textUsername);
       String dataLogin = response.body;
       final data = jsonDecode(dataLogin);
-
       String resStatus = data["username"];
-      Navigator.pop(context);
       showDialog(
           context: context,
           builder: (context) {
@@ -124,21 +119,35 @@ class _BodyState extends State<Body> {
           if (_timer.isActive) {_timer.cancel()}
         });
   }
-  //   if (textEmail == userEmail && textPassword == userPassword) {
-  //     setState(() {
-  //       showDialog(
-  //         context: context,
-  //         builder: (BuildContext context) => const DialogSuccessLogin(),
-  //       );
-  //     });
-  //   } else if (textEmail != userEmail && textPassword != userPassword) {
-  //     setState(() {
-  //       showDialog(
-  //           context: context,
-  //           builder: (BuildContext context) => const DialogFailedLogin());
-  //     });
-  //   }
-  // }
+
+  saveSession(String textUsername) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    await pref.setString("username", textUsername);
+    await pref.setBool("is_login", true);
+  }
+
+  void removeSession(String textUsername) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    await pref.remove('is_login');
+    await pref.remove('username');
+  }
+
+  void cekLogin() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    var islogin = pref.getBool("is_login");
+    if (islogin != null && islogin) {
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (BuildContext context) => const DashboardScreen()));
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    cekLogin();
+  }
 
   @override
   Widget build(BuildContext context) {
